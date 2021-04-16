@@ -16,27 +16,29 @@ shapeA () {
   echo ""
   echo "######################################################################"
   echo ""
+  sleep 2
 }
 
 shapeB () {
   echo ""
   echo "#################################"
   echo ""
+  sleep 2
 }
 
 # Unzipping archive
 shapeA
 echo -e "${A}Performing Reverse Engineering...${NC}"
 shapeA
-echo -e "${B}Unzipping the Application...${NC}"
+echo -e "${B}Unzipping the Application (saved as unzip_folder)...${NC}"
 unzip $APP -d unzip_folder > /dev/null 2>&1
 
 # Jadx (generate java code)
-echo -e "${B}Decompiling the Application Using Jadx Tool...${NC}"
+echo -e "${B}Decompiling the Application Using Jadx Tool (saved as jadx_folder)...${NC}"
 /usr/share/jadx/bin/jadx $APP -d jadx_folder > /dev/null 2>&1
 
 # To read AndroidManifest.xml and generate smali files
-echo -e "${B}Extracting the Manifest.xml File Using APKTool...${NC}"
+echo -e "${B}Extracting the Manifest.xml File Using APKTool (saved as apktool_folder)...${NC}"
 apktool d $APP -o apktool_folder > /dev/null 2>&1
 
 echo -e "${B}Extracting the Signing Certificate...${NC}"
