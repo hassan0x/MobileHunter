@@ -80,6 +80,7 @@ shapeB
 strings unzip_folder/classes.dex | grep -i "content://[a-zA-Z0-9\.\/\_\-]\+\|http[s]*://[a-zA-Z0-9\.\/\_\-]\+" | sed 's/^[ ]*//g' | grep --color=auto -i "content://[a-zA-Z0-9\.\/\_\-]\+\|http[s]*://[a-zA-Z0-9\.\/\_\-]\+"
 
 PackageName=$(xmllint --xpath '//manifest/@package' apktool_folder/AndroidManifest.xml | cut -d '"' -f 2 | sed 's/\./\//g')
+echo "Package Name:" $PackageName
 
 # Search for Logs
 shapeB
